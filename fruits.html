@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Fresh Fruits</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="bootstrap/jquery.slim.min.js"></script>
+  <script src="bootstrap/popper.min.js"></script>
+  <script src="bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="cart.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-center mt-4 mb-4">Fresh Fruits</h1>  
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="index.html">
+      <img src="bird.jpg" alt="logo" style="width:40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">How it works</a>
+        </li>  
+      </ul>
+    </div>  
+  </nav>
+
+  <div class="container1">
+    <div class="row">
+      <!-- Item 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="fruit1.jpg" alt="Apples" style="width:100%;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Apples</h5>
+            <p class="card-text">Fresh and crunchy apples.</p>
+            <p class="card-text"><strong>Price:</strong> ₹150 per kg</p>
+            <div class="input-group mb-3">
+              <input type="number" id="apple-quantity" class="form-control" placeholder="Quantity (kg)" aria-label="Quantity" aria-describedby="basic-addon2" min="0.5">
+              <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addToCart({name: 'Apples', description: 'Fresh and crunchy apples.', price: 150, quantity: document.getElementById('apple-quantity').value, image: 'fruit1.jpg'})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="fruit2.jpg" alt="Bananas" style="width:100%;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Bananas</h5>
+            <p class="card-text">Ripe and sweet bananas.</p>
+            <p class="card-text"><strong>Price:</strong> ₹40 per dozen</p>
+            <div class="input-group mb-3">
+              <input type="number" id='banana-quantity' class="form-control" placeholder="Quantity (dozen)" aria-label="Quantity" aria-describedby="basic-addon2" min="1">
+              <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addToCart({name: 'Bananas', description: 'Ripe and sweet bananas.', price: 40, quantity: document.getElementById('banana-quantity').value, image: 'fruit2.jpg'})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="fruit3.jpg" alt="Oranges" style="width:100%;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Oranges</h5>
+            <p class="card-text">Juicy and tangy oranges.</p>
+            <p class="card-text"><strong>Price:</strong> ₹80 per kg</p>
+            <div class="input-group mb-3">
+              <input type="number" id='orange-quantity' class="form-control" placeholder="Quantity (kg)" aria-label="Quantity" aria-describedby="basic-addon2" min="0.5">
+              <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addToCart({name: 'Oranges', description: 'Juicy and tangy oranges.', price: 80, quantity: document.getElementById('orange-quantity').value, image: 'fruit3.jpg'})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 4 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="fruit4.jpg" alt="Grapes" style="width:100%;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Grapes</h5>
+            <p class="card-text">Sweet and juicy grapes.</p>
+            <p class="card-text"><strong>Price:</strong> ₹90 per kg</p>
+            <div class="input-group mb-3">
+              <input type="number" id='grape-quantity' class="form-control" placeholder="Quantity (kg)" aria-label="Quantity" aria-describedby="basic-addon2" min="0.5">
+              <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addToCart({name: 'Grapes', description: 'Sweet and juicy grapes.', price: 90, quantity: document.getElementById('grape-quantity').value, image: 'fruit4.jpg'})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 5 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="fruit5.jpg" alt="Mangoes" style="width:100%;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Mangoes</h5>
+            <p class="card-text">Sweet and delicious mangoes.</p>
+            <p class="card-text"><strong>Price:</strong> ₹100 per kg</p>
+            <div class="input-group mb-3">
+              <input type="number" id='mangoes-quantity' class="form-control" placeholder="Quantity (kg)" aria-label="Quantity" aria-describedby="basic-addon2" min="0.5">
+              <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addToCart({name: 'Mango', description: 'Sweet and delicious mangoes.', price: 100, quantity: document.getElementById('mangoes-quantity').value, image: 'fruit5.jpg'})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 6 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="fruit6.jpg" alt="Pineapple" style="width:100%;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Pineapple</h5>
+            <p class="card-text">Fresh and tangy pineapple.</p>
+            <p class="card-text"><strong>Price:</strong> ₹50 per piece</p>
+            <div class="input-group mb-3">
+              <input type="number" id='pineapple-quantity' class="form-control" placeholder="Quantity (pieces)" aria-label="Quantity" aria-describedby="basic-addon2" min="1">
+              <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addToCart({name: 'Pineapple', description: 'Fresh and tangy pineapple.', price: 50, quantity: document.getElementById('pineapple-quantity').value, image: 'fruit6.jpg'})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 7 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="fruit7.jpg" alt="Papaya" style="width:100%;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Papaya</h5>
+            <p class="card-text">Fresh and nutritious papaya.</p>
+            <p class="card-text"><strong>Price:</strong> ₹40 per kg</p>
+            <div class="input-group mb-3">
+              <input type="number" id='papaya-quantity' class="form-control" placeholder="Quantity (kg)" aria-label="Quantity" aria-describedby="basic-addon2" min="0.5">
+              <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addToCart({name: 'papaya', description: 'Fresh and nutritious papaya.', price:40, quantity: document.getElementById('pineapple-quantity').value, image: 'fruit7.jpg'})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 8 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="fruit8.jpg" alt="Watermelon" style="width:100%;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Watermelon</h5>
+            <p class="card-text">Fresh and juicy watermelon.</p>
+            <p class="card-text"><strong>Price:</strong> ₹20 per kg</p>
+            <div class="input-group mb-3">
+              <input type="number" id='watermelon-quantity'  class="form-control" placeholder="Quantity (kg)" aria-label="Quantity" aria-describedby="basic-addon2" min="0.5">
+              <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addToCart({name: 'watermelon', description: 'Fresh and juicy watermelon.', price:20, quantity: document.getElementById('watermelon-quantity').value, image: 'fruit8.jpg'})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 9 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="fruit9.jpg" alt="Strawberries" style="width:100%;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Strawberries</h5>
+            <p class="card-text">Fresh and sweet strawberries.</p>
+            <p class="card-text"><strong>Price:</strong> ₹200 per kg</p>
+            <div class="input-group mb-3">
+              <input type="number" id='strawberries-quantity' class="form-control" placeholder="Quantity (kg)" aria-label="Quantity" aria-describedby="basic-addon2" min="0.5">
+              <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addToCart({name: 'watermelon', description: 'Fresh and sweet strawberries.', price:200, quantity: document.getElementById('strawberries-quantity').value, image: 'fruit9.jpg'})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
