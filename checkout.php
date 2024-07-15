@@ -1,7 +1,4 @@
 <?php
-
-ob_start();
-session_start();
 // Enable error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -9,8 +6,7 @@ ini_set('display_errors', 1);
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bakery";
-
+$dbname = "ayaan";
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,36 +15,33 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
+session_start();
 class Product {
-    public $name;
-    public $price;
-    public $size;
+  public $name;
+  public $price;
+  public $size;
+  public $Iid;
 
-    public function __construct($name, $price, $size) {
-        $this->name = $name;
-        $this->price = $price;
-        $this->size = $size;
-    }
-    public function displayProduct() {
-      return "Name: {$this->name}, Price: ₹{$this->price}, Quantity: {$this->size}";
-    }
+  public function __construct($name, $price, $size, $Iid) {
+      $this->name = $name;
+      $this->price = $price;
+      $this->size = $size;
+      $this->Iid = $Iid;
+  }
+  public function displayProduct() {
+      return "Name: {$this->name}, Price: ₹{$this->price}, Quantity: {$this->size}, Id: {$this->Iid}";
+  }
 }
 $products = $_SESSION['cart'];
 $sum = 0;
 foreach ($products as $product) {
-    $sum = $sum+ $product->price;
-   //$stmt = $conn->prepare("INSERT INTO cart_items (product_name, product_price, product_size) VALUES (?, ?, ?)");
-   // $stmt->bind_param("sss", $product_name, $product_price, $product_size);  
+    $sum = $sum + $product->price;
+    // $stmt = $conn->prepare("INSERT INTO cart_items (product_name, product_price, product_size) VALUES (?, ?, ?)");
+    // $stmt->bind_param("sss", $product_name, $product_price, $product_size);  
 }
- //$sql="INSERT INTO order1 (order_id, customer_id, final amount, Address, delivery date, delivery time, order date, status) VALUES(1,1,'$sum',)"
+echo $sum;
 // $stmt = $conn->prepare("INSERT INTO cart_items (product_name, product_price, product_size) VALUES (?, ?, ?)");
 // $stmt->bind_param("sss", $product_name, $product_price, $product_size);
-// foreach ($products as $product) {
-//   $stmt = $conn->prepare("INSERT INTO cart_items (product_name, product_price, product_size) VALUES (?, ?, ?)");
-//   $stmt->bind_param("sss", $product_name, $product_price, $product_size);  
-// }
-// $stmt->close();
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -99,7 +92,36 @@ $conn->close();
         }
     </style>
 </head>
+
 <body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="index.php">
+      <img src="bird.jpg" alt="logo" style="width:40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">Home</a>
+        </li>
+        <?php 
+        if ($_SESSION['myuser'] != null) {
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="profile.php">Profile</a>';
+        echo '  </li>';
+         } else {
+        echo '  <li class="nav-item">';
+        echo '     <a class="nav-link" href="login.php">Login</a>';
+        echo '  </li>';
+        }?>
+        <li class="nav-item">
+          <a class="nav-link" href="#">How it works</a>
+        </li>  
+      </ul>
+    </div>  
+  </nav>
     <div class="container">
         <div class="total-sum">Total: ₹<?php echo $sum; ?></div>
         <form class="order-form" id="orderForm" action="placeorder.php" method="post">
@@ -107,8 +129,9 @@ $conn->close();
             <input type="date" name="delivery_date" required>
             <input type="time" name="delivery_time" required>
             <input type="hidden" name="total_amount" value="<?php echo $sum; ?>">
-            <button type="submit" class="place-order-btn">Place Order</button>
+            <button type="submit" class="place-order-btn" onclick="placeorder()" >Place Order</button>
         </form>
     </div>
+
 </body>
 </html>
