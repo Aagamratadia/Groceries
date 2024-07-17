@@ -18,34 +18,47 @@
 ?>
 <div class="container">
   <h1 class="text-center mt-4 mb-4">Beverages</h1>  
+
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="index.php">
-      <img src="bird.jpg" alt="logo" style="width:40px;">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">Home</a>
-        </li>
-        <?php 
-        if ($_SESSION['myuser'] != null) {
+  <a class="navbar-brand" href="index.php">
+    <img src="bird.jpg" alt="logo" style="width:40px;">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">How it works</a>
+      </li> 
+      <?php 
+      if ($_SESSION['myuser'] != null) {
         echo '<li class="nav-item">';
         echo '<a class="nav-link" href="profile.php">Profile</a>';
-        echo '  </li>';
-         } else {
-        echo '  <li class="nav-item">';
-        echo '     <a class="nav-link" href="login.php">Login</a>';
-        echo '  </li>';
-        }?>
-        <li class="nav-item">
-          <a class="nav-link" href="#">How it works</a>
-        </li>  
-      </ul>
-    </div>  
-  </nav>
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="add_to_cart.php"><img src="cart.png" alt="cart"></a>';
+        echo '</li>';
+        echo '<li class="nav-item dropdown">';
+        echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
+        echo '<img src="icon1.png" alt="">';
+        echo '</a>';
+        echo '<ul class="dropdown-menu">';
+        echo '<li><a class="dropdown-item" href="vieworders.php">View Orders</a></li>';
+        echo '<li><a class="dropdown-item" href="logout.php">Logout</a></li>';
+        echo '</ul>';
+        echo '</li>';
+      } else {
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="login.php">Login</a>';
+      }?> 
+    </ul>
+  </div>  
+</nav>
+
   <div class="container1">
     <div class="row">
       <!-- Item 1 -->
